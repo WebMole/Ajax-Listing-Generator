@@ -18,17 +18,12 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Prevent direct access to other files. */
-$access = 'authorized';
-
-require_once('lib/init.php');
-
-if (isset($_POST['id']))
-{
-	$id = $_POST['id'];
-}
-
-$Schools = new SchoolManager();
-$data = $Schools->getSchoolInfos($id);
+/* Prevent direct access to this file. */
+if ($access != 'authorized')
+    die('You are not allowed to view this file');
+    
+if (!file_exists('config/configuration.php')) die("Visit config folder to initialize configuration");
+require_once('config/configuration.php');
+require_once('lib/school-manager.php');
 
 ?>
