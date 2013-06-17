@@ -83,8 +83,14 @@ class DatabaseHelper
 			}
 			else
 			{
-				return $result;
-			}
+				while($row = mysqli_fetch_array($result))
+                {
+                    $rows[] = $row;
+                } 
+            
+                return $rows;
+            }
+            
 		}
 	}
 

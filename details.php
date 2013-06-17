@@ -26,9 +26,8 @@ require_once('lib/init.php');
 if (isset($_POST['id']))
 {
 	$id = $_POST['id'];
+	$Schools = new SchoolManager();
+	$data = $Schools->getSchoolInfos($id);
 }
-
-$Schools = new SchoolManager();
-$data = $Schools->getSchoolInfos($id);
 
 ?>
