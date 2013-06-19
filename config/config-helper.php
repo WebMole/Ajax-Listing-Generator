@@ -45,24 +45,23 @@ class ConfigHelper
 
 	private function updateLines()
 	{
-		foreach ( $config_file as $line_num => $line ) {
-		if ( '$table_prefix  =' == substr( $line, 0, 16 ) ) {
-			$config_file[ $line_num ] = '$table_prefix  = \'' . addcslashes( $prefix, "\\'" ) . "';\r\n";
-			continue;
-		}
+		foreach ( $config_file as $line_num => $line )
+		{
+		  if ( '$table_prefix  =' == substr( $line, 0, 16 ) )
+		  {
+			 $config_file[ $line_num ] = '$table_prefix  = \'' . addcslashes( $prefix, "\\'" ) . "';\r\n";
+			 continue;
+		  }
+        }
 	}
 
-	private testDatabaseSettings()
+	private function testDatabaseSettings()
 	{
 		define('DB_NAME', $dbname);
 		define('DB_USER', $uname);
 		define('DB_PASSWORD', $pwd);
-		define('DB_HOST', $dbhost);
-
-		
+		define('DB_HOST', $dbhost);		
 	}
 }
-
-
 	
 ?>
