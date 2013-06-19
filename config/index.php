@@ -43,6 +43,7 @@ $access = 'authorized';
 
         <div class="container">
         	<h1>School Test Case Settings</h1>
+        	<div id="msg"></div>
         	<?php require_once('config-form.php'); ?>
     	</div>
 

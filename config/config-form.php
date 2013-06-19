@@ -84,6 +84,13 @@ if ($access != 'authorized')
 							</label>
 						</div>
 					</div>
+					<div class="control-group">
+                        <div class="controls">
+                            <label class="checkbox">
+                                <input type="checkbox" id="execution-time-enabled" checked=""> Show execution time on every pages
+                            </label>
+                        </div>
+                    </div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary">Save</button>
 					</div>
@@ -195,5 +202,3 @@ if ($access != 'authorized')
 		</div>
 	</div>
 </div>
-
-<div id="msg"></div>

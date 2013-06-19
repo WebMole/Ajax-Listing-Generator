@@ -26,12 +26,12 @@ if (file_exists(dirname(__FILE__) . '/configuration.php'))
 if (file_exists(dirname(__FILE__) . '/../lib/school-manager.php'))
     require_once(dirname(__FILE__) . '/../lib/school-manager.php');
 
-$insertType = mysql_real_escape_string($_POST["insert_type"]);
+$action_type = mysql_real_escape_string($_POST["action_type"]);
 
 /****************************************************************
 * Insert single school
 ****************************************************************/
-if ($insertType == "insert_single")
+if ($action_type == "insert_single")
 {
     $Schools = new SchoolManager();
     $school_name = mysql_real_escape_string($_POST["school_name"]);
@@ -51,14 +51,23 @@ if ($insertType == "insert_single")
 /****************************************************************
 * Insert random schools
 ****************************************************************/
-if ($insertType == "insert_multiple")
+if ($action_type == "insert_multiple")
 {
     $Schools = new SchoolManager();
     $num_random_schools = mysql_real_escape_string(intval($_POST['num_random_schools']));
     if(!empty($num_random_schools))
     {
+        $time_start = microtime(true);
+        
         $Schools->insertRandomSchools($num_random_schools);
-        echo "<div class='alert alert-success'>Successfully inserted <b>" . $num_random_schools . " schools</b> in database</div>";
+        
+        $time_end = microtime(true);
+        $execution_time = ($time_end - $time_start);
+        
+        echo '<div class="alert alert-success">';
+        echo 'Successfully inserted <b class="label label-info">' . $num_random_schools . ' schools</b> in database.<br />';
+        echo 'Total Execution Time: <b class="label label-info">' . $execution_time . '</b> seconds';
+        echo '</div>';
     }
     else
     {
