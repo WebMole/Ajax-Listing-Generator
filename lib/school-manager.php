@@ -22,7 +22,8 @@
 if ($access != 'authorized')
     die('You are not allowed to view this file');
 
-require_once("lib/database-helper.php");
+require_once(dirname(__FILE__) . "/database-helper.php");
+require_once(dirname(__FILE__) . "/LoremIpsum.class.php");
 
 class SchoolManager {
     
@@ -33,18 +34,38 @@ class SchoolManager {
 		// Connect to database
 		$this->dbHelper = new databaseHelper();
 		
-		try {
+		try
+		{
 		 	$this->dbHelper->init();
-		 } catch (Exception $e) {
+		}
+		catch (Exception $e)
+		{
 		 	echo $e;
-		 }
+		}
 	}
 
 	function __destruct() {
-		if (DEBUG) echo "SchoolManager Destroyed\n";
+		if (DEBUG) echo "SchoolManager Destroyed<br />";
 	}
 
-	function mainList()
+    function insertSchool($name, $address, $description)
+    {
+        $this->dbHelper->insert_single($name, $address, $description);
+    }
+    
+    function insertRandomSchools($num_schools)
+    {
+        $textgen = new LoremIpsumGenerator();
+        for ($i=0; $i < $num_schools; $i++)
+        { 
+            $name = $textgen->getContent(3, "txt", false);
+            $description = $textgen->getContent(100, "txt", true);
+            $address = $textgen->getContent(4, "txt", false);
+            $this->dbHelper->insert_single($name, $address, $description);
+        }
+    }
+
+	function getMainList()
 	{
 	 	$results = $this->dbHelper->request_main();
 	 	// Loop to list results
@@ -61,14 +82,14 @@ class SchoolManager {
 	function getSchoolInfos($id)
 	{
 		$results = $this->dbHelper->request_infos($id);
-	 	// Loop to list results
-		foreach ($results as $row)
-		{
-			echo '<ul>';
-			echo '<li>Adress: <span class="label adress">' . $row['adress'] . '</span></li>';
-			echo '<li>Description: <span class="label description">' . $row['description'] . '</span></li>';
-			echo '</ul>';
-		}
+        foreach ($results as $row)
+        {
+            echo '<ul>';
+            echo '<li>Address: <p class="alert alert-info Address">' . $row['address'] . '</p></li>';
+            echo '<li>Description: <p class="alert alert-info description">' . $row['description'] . '</p></li>';
+            echo '</ul>';
+        }
+		
 	}
 
 	function getSchool($id)

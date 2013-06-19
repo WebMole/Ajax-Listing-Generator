@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `school` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `adress` text NOT NULL,
+  `address` text NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `school` (
 -- Contenu de la table `school`
 --
 
-INSERT INTO `school` (`id`, `name`, `adress`, `description`) VALUES
+INSERT INTO `school` (`id`, `name`, `address`, `description`) VALUES
 (1, 'professionelle', 'thomas gauthier', 'maternelle'),
 (2, 'Saint Mathieu', 'rue bégin', 'Secondaire'),
 (3, 'Dominiquaine racine', 'rue champs elysées chicoutimi', 'collège');

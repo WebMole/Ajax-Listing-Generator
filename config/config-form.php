@@ -21,6 +21,7 @@
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
+
 ?>
 
 <ul class="nav nav-tabs" id="navigation-tabs">
@@ -149,9 +150,9 @@ if ($access != 'authorized')
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="school-adress">School adress</label>
+						<label class="control-label" for="school-address">School address</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" id="school-adress" placeholder="">
+							<input type="text" class="input-xlarge" id="school-address" placeholder="">
 						</div>
 					</div>
 					<div class="control-group">
@@ -162,7 +163,7 @@ if ($access != 'authorized')
 					</div>
 
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Insert</button>
+						<button type="submit" class="btn btn-primary" id="add-single-action">Insert</button>
 					</div>
 				</fieldset>
 			</form>
@@ -179,7 +180,7 @@ if ($access != 'authorized')
 						</div>
 					</div>
 					<div class="form-actions">
-						<button type="submit" class="btn btn-primary">Insert</button>
+						<button type="submit" class="btn btn-primary" id="add-multiple-action">Insert</button>
 					</div>
 				</fieldset>
 			</form>
@@ -187,10 +188,12 @@ if ($access != 'authorized')
 				<h2>Sample</h2>
 				<div class="well">
 					<h3>@todo: Random School Name</h3>
-					<p>@todo: Random School adress</p>
+					<p>@todo: Random School address</p>
 					<p>@todo: Random School description</p>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+
+<div id="msg"></div>

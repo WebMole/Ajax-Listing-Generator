@@ -51,7 +51,14 @@ $access = 'authorized';
         	<h1>School listing example in ajax</h1>
         	<?php
         	$Schools = new SchoolManager();
-        	$Schools->mainList()
+            try
+            {
+                $Schools->getMainList();
+            }
+            catch (Exception $e)
+            {
+                echo $e;
+            }
         	?>
         </div>
 

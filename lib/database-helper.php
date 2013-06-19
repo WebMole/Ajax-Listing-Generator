@@ -33,9 +33,9 @@ class DatabaseHelper
 		if (!empty($con))
 		{
 			mysqli_close($this->con);
-			if(DEBUG) echo "Disconnected from database\n";
+			if(DEBUG) echo "Disconnected from database<br />";
 		}
-		if(DEBUG) echo "DatabaseHelper Destroyed\n";
+		if(DEBUG) echo "DatabaseHelper Destroyed<br />";
 	}
 
 	public function init()
@@ -64,45 +64,53 @@ class DatabaseHelper
 			if (!$db) {
 				throw new Exception('<div class="alert alert-error"><b>Cannot select Database</b>: <i>' . mysqli_error() . '</i></div>');
 			}
-			if(DEBUG) echo "Successfully connected to Database.\n";
+			if(DEBUG) echo "Successfully connected to Database.<br />";
 			$this->isConnected = true;
 			$this->con = $con;
 			return $con;
 		}
 	}
 
-	private function request($sql)
+	private function request($sql, $insert = false)
 	{
 		if ($this->isConnected)
 		{
-			$result = mysqli_query($this->con, $sql);
+			$request = mysqli_query($this->con, $sql);
 			
-			if (!$result)
+			if (!$request)
 			{
 				throw new Exception('<div class="alert alert-error"><b>SQL request failed</b>: <i>' . mysqli_error($this->con) . '</i></div>');
 			}
 			else
 			{
-				while($row = mysqli_fetch_array($result))
+			    if(!$insert)
                 {
-                    $rows[] = $row;
-                } 
-            
-                return $rows;
+                    while($row = mysqli_fetch_array($request))
+                    {
+                        $rows[] = $row;
+                    } 
+                    
+                    return $rows;   
+                }
             }
-            
 		}
 	}
 
 	public function request_infos($id)
 	{
-		$sql = "SELECT adress, description from " . DB_TABLE_NAME . " WHERE id=" . $id . " " . $this->limit;
+		$sql = "SELECT address, description from " . DB_TABLE_NAME . " WHERE id=" . $id . " " . $this->limit . ";";
 		return $this->request($sql);
 	}
+    
+    public function insert_single($name, $address, $description)
+    {
+        $sql = "INSERT INTO " . DB_TABLE_NAME . " (name, address, description) VALUES ( '" . $name . "', '" . $address . "', '" . $description . "');"; 
+        return $this->request($sql, true);
+    }
 
 	public function request_main()
 	{
-		$sql = "SELECT id, name from " . DB_TABLE_NAME . $this->limit;
+		$sql = "SELECT id, name from " . DB_TABLE_NAME . $this->limit . ";";
 		return $this->request($sql);
 	}
 	
@@ -114,7 +122,7 @@ class DatabaseHelper
 		$limit = "";
 		if($pagination_activated)
 		{
-			$limit = " LIMIT {$start}, {$school_per_page}";	
+			$limit = " LIMIT {" . $start . "}, {" . $school_per_page . "}";	
 		}
 		
 		$this->limit = $limit;
