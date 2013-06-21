@@ -21,10 +21,24 @@
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
-    
-if (!file_exists(dirname(__FILE__) . '/../configuration.php'))
-    die("Please, visit the <a href='admin/'>Administration</a> to setup the application.");
-
-require_once(dirname(__FILE__) . '/../configuration.php');
-
 ?>
+
+<h1>School listing example in ajax</h1>
+<?php
+
+require_once(dirname(__FILE__) . "/../lib/school-manager.php");
+
+$Schools = new SchoolManager();
+try
+{
+    $Schools->getMainList();
+}
+catch (Exception $e)
+{
+    echo $e;
+}
+
+if (PAGINATION_ENABLED)
+{
+    require_once("lib/pagination.php");
+}

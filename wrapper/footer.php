@@ -21,10 +21,18 @@
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
-    
-if (!file_exists(dirname(__FILE__) . '/../configuration.php'))
-    die("Please, visit the <a href='admin/'>Administration</a> to setup the application.");
-
-require_once(dirname(__FILE__) . '/../configuration.php');
-
 ?>
+
+<footer id="page-footer">
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <p>Copyme <?php echo date("Y"); ?> School Listing Test. No rights reserved.</p>
+            </div>
+            
+            <div class="span6">
+                <?php require(dirname(__FILE__) . '/navigation.php'); ?>
+            </div>
+        </div>
+    </div>
+</footer>

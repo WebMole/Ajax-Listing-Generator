@@ -21,10 +21,16 @@
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
-    
-if (!file_exists(dirname(__FILE__) . '/../configuration.php'))
-    die("Please, visit the <a href='admin/'>Administration</a> to setup the application.");
-
-require_once(dirname(__FILE__) . '/../configuration.php');
-
 ?>
+
+<div class="pagination">
+  <ul>
+    <li><a href="#">Prev</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">Next</a></li>
+  </ul>
+</div>

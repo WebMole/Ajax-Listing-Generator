@@ -18,13 +18,24 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Prevent direct access to this file. */
-if ($access != 'authorized')
-    die('You are not allowed to view this file');
-    
-if (!file_exists(dirname(__FILE__) . '/../configuration.php'))
-    die("Please, visit the <a href='admin/'>Administration</a> to setup the application.");
+/* This is to prevent direct access to other php files */
+$access = 'authorized';
 
-require_once(dirname(__FILE__) . '/../configuration.php');
+if (file_exists(dirname(__FILE__) . '/../configuration.php'))
+    require_once(dirname(__FILE__) . '/../configuration.php');
+else
+    die("No configuration detected");
+
+if (file_exists(dirname(__FILE__) . '/school-manager.php'))
+    require_once(dirname(__FILE__) . '/school-manager.php');
+else
+    die("No school-manager detected");
+
+if (isset($_POST['id']))
+{
+	$id = $_POST['id'];
+	$Schools = new SchoolManager();
+	$data = $Schools->getSchoolInfos($id);
+}
 
 ?>

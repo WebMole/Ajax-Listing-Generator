@@ -20,6 +20,18 @@
 
 /* This is to prevent direct access to other php files */
 $access = 'authorized';
+
+define("CONFIGFILE", dirname(__FILE__) . "/../configuration.php");
+if (file_exists(CONFIGFILE))
+{
+    $config_file_exists = true;
+    require_once(CONFIGFILE);
+}
+else
+{
+    $config_file_exists = false;
+}
+
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -34,7 +46,7 @@ $access = 'authorized';
         <meta name="viewport" content="width=device-width">
 
         <link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" rel="stylesheet">
-        <script src="../js/vendor/modernizr-2.6.2.min.js"></script>
+        <script src="../assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -44,12 +56,13 @@ $access = 'authorized';
         <div class="container">
         	<h1>School Test Case Settings</h1>
         	<div id="msg"></div>
-        	<?php require_once('config-form.php'); ?>
+        	<?php require_once('form.php'); ?>
+        	<footer><a href="../">Go to the Live Application</a></footer>
     	</div>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="../js/config.js"></script>
+        <script src="admin.js"></script>
     </body>
 </html>

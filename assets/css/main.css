@@ -1,0 +1,44 @@
+/*
+ * School Listing Test
+ */
+
+body
+{
+	background: white url("../img/tiny_grid.png") repeat;
+}
+
+header#page-header, .well
+{
+	background: white url("../img/noisy_grid.png") repeat;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+header#page-header nav
+{
+	margin-top: 70px;
+	float: right;
+}
+
+div.content
+{
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+footer#page-footer
+{
+	background: black url("../img/old_mathematics.png") repeat;
+	padding-top: 20px;
+	color: white
+}
+
+footer#page-footer p
+{
+	padding-top: 5px;
+}
+
+footer#page-footer nav
+{
+	float: right;
+}

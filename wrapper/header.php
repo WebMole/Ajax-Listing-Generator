@@ -21,10 +21,17 @@
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
-    
-if (!file_exists(dirname(__FILE__) . '/../configuration.php'))
-    die("Please, visit the <a href='admin/'>Administration</a> to setup the application.");
-
-require_once(dirname(__FILE__) . '/../configuration.php');
-
 ?>
+<header id="page-header">
+    <div class="container">
+        <div class="row">
+            <div class="span6">
+                <a href="#"><img src="assets/img/school-listing-test.png" alt="logo" /></a>
+            </div>
+            
+            <div class="span6">
+                <?php require_once(dirname(__FILE__) . '/navigation.php'); ?>
+            </div>
+        </div>
+    </div>
+</header>

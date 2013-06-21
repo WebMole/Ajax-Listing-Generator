@@ -21,10 +21,15 @@
 /* Allow direct access to other files. */
 $access = 'authorized';
 
-if (file_exists(dirname(__FILE__) . '/configuration.php'))
-    require_once(dirname(__FILE__) . '/configuration.php');
+if (file_exists(dirname(__FILE__) . '/../configuration.php'))
+    require_once(dirname(__FILE__) . '/../configuration.php');
+else
+    die("No configuration detected");
+
 if (file_exists(dirname(__FILE__) . '/../lib/school-manager.php'))
     require_once(dirname(__FILE__) . '/../lib/school-manager.php');
+else
+    die("No school-manager detected");
 
 $action_type = mysql_real_escape_string($_POST["action_type"]);
 

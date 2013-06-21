@@ -18,16 +18,21 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* Prevent direct access to other files. */
-$access = 'authorized';
+/* Prevent direct access to this file. */
+if ($access != 'authorized')
+    die('You are not allowed to view this file');
 
-require_once('lib/init.php');
+$page_type = $_REQUEST["page"];
 
-if (isset($_POST['id']))
+if (empty($page_type) || $page_type == "schools" || $page_type == "home")
 {
-	$id = $_POST['id'];
-	$Schools = new SchoolManager();
-	$data = $Schools->getSchoolInfos($id);
+    require_once(dirname(__FILE__) . "/../pages/schools.php");   
 }
-
-?>
+else if ($page_type == "contact")
+{
+    require_once(dirname(__FILE__) . "/../pages/contact.php");
+}
+else if ($page_type == "about")
+{
+    require_once(dirname(__FILE__) . "/../pages/about.php");
+}

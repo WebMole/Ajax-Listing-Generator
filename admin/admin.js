@@ -38,7 +38,7 @@ $(document).ready(function() {
 	{
 		$.ajax({
 			type: "POST",
-			url: "config-ajax.php",
+			url: "ajax.php",
 			data: {action_type:"insert_single", school_name:$("#school-name").val(), school_address:$("#school-address").val(), school_description:$("#school-description").val()}
 		}).done(function( result )
 		{
@@ -50,7 +50,7 @@ $(document).ready(function() {
 	{
 		$.ajax({
 			type: "POST",
-			url: "config-ajax.php",
+			url: "ajax.php",
 			data: {action_type:"insert_multiple", num_random_schools:$("#school-number").val()}
 		}).done(function( result )
 		{

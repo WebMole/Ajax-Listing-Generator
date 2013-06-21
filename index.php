@@ -21,6 +21,9 @@
 /* This is to prevent direct access to other php files */
 $access = 'authorized';
 
+/* Supercharge application with configs! */
+require_once(dirname(__FILE__) . "/lib/init.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -31,41 +34,40 @@ $access = 'authorized';
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>School listing</title>
-        <meta name="description" content="School listing example in ajax">
+        <title>School Listing Test</title>
+        <meta name="description" content="School Listing Test">
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
+        <?php if(CSS_ENABLED) : ?>
+        <link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/css/main.css">
         <link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" rel="stylesheet">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <?php endif; ?>
+        
+        <script src="assets/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
         <![endif]-->
+        
+        <?php if (WRAPPER_ENABLED && WRAPPER_HEADER) require_once(dirname(__FILE__) . "/wrapper/header.php"); ?>
+        
         <div class="container">
-        	<?php require_once("lib/init.php"); ?>
-        	<h1>School listing example in ajax</h1>
-        	<?php
-        	$Schools = new SchoolManager();
-            try
-            {
-                $Schools->getMainList();
-            }
-            catch (Exception $e)
-            {
-                echo $e;
-            }
-        	?>
+            <?php if (WRAPPER_ENABLED && WRAPPER_SIDEBAR) require_once(dirname(__FILE__) . "/wrapper/sidebar.php"); ?>
+            <div class="content">
+        	   <?php require_once("lib/content.php"); ?>
+        	</div>
         </div>
+        
+        <?php if (WRAPPER_ENABLED && WRAPPER_FOOTER) require_once(dirname(__FILE__) . "/wrapper/footer.php"); ?>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/main.js"></script>
     </body>
 </html>

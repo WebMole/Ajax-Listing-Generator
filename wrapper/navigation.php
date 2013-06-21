@@ -21,32 +21,14 @@
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
-
-define('DEBUG', true);
-
-/****************************************************************
-* Database settings
-****************************************************************/
-
-define('DB_NAME', 		'');
-define('DB_TABLE_NAME', '');
-define('DB_USER', 		'');
-define('DB_PASSWORD', 	'');
-define('DB_HOST', 		'');
-
-/****************************************************************
-* Pagination
-****************************************************************/
-
-define('PAGINATION_ENABLED', 	'');
-define('SCHOOLS_PER_PAGE', 		'');
-
-/****************************************************************
-* Application Settings
-****************************************************************/
-
-define('CSS_ENABLED', 		'');
-define('WRAPPER_ENABLED', 	'');
-define('SHOOLS_LINKS', 		'');
-
 ?>
+
+<nav>
+    <ul class="nav nav-pills">
+      <li class="active">
+        <a href="?page=home">Home</a>
+      </li>
+      <li><a href="?page=about">About</a></li>
+      <li><a href="?page=contact">Contact</a></li>
+    </ul>
+</nav>
