@@ -17,22 +17,42 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
+ 
 /* Prevent direct access to this file. */
 if ($access != 'authorized')
     die('You are not allowed to view this file');
+
+$page_num = 1;
+$last_page_num = 5; // ask mysql here
+
+if ( !empty($_GET["page_num"]) )
+{
+    $page_num = $_GET["page_num"];
+}
+
 ?>
-
-
 
 <div class="pagination">
   <ul>
-    <li><a href="#">Prev</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li><a href="#">Next</a></li>
+      
+      
+    <?php
+    if ($page_num === 1)
+    {
+        echo '<li class="disabled"><a>&laquo;</a></li>';   
+    }
+    else
+    {
+        echo '<li class="disabled"><a href="#">&laquo;</a></li>';
+    }
+    ?>
+    
+    <li><a href="?page_num=1">1</a></li>
+    <li><a href="?page_num=2">2</a></li>
+    <li><a href="?page_num=3">3</a></li>
+    <li><a href="?page_num=4">4</a></li>
+    <li><a href="?page_num=5">5</a></li>
+    <li><a href="#">&raquo;</a></li>
+    
   </ul>
 </div>
