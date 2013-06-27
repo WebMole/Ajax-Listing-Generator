@@ -53,16 +53,19 @@ class DatabaseHelper
 	public function connectToDatabase()
 	{
 		$con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
-
-		if (!$con)
+        
+        if (mysqli_connect_errno($con)) {
+           throw new Exception('<div class="alert alert-error"><b>Failed to connect to MySQL</b>: <i>' .  mysqli_connect_error() . '</i></div>');
+        }
+        else if (!$con)
 		{
-			throw new Exception('<div class="alert alert-error"><b>Failed to connect to MySQL</b>: <i>' . mysqli_error() . '</i></div>');
+			throw new Exception('<div class="alert alert-error"><b>An error occured with MySQL</b>: <i>' . mysqli_error() . '</i></div>');
 		}
 		else
 		{
 			$db = mysqli_select_db($con, DB_NAME);
 			if (!$db) {
-				throw new Exception('<div class="alert alert-error"><b>Cannot select Database</b>: <i>' . mysqli_error() . '</i></div>');
+				throw new Exception('<div class="alert alert-error"><b>Cannot select Database</b>: <i>' . mysqli_error($con) . '</i></div>');
 			}
 			if(DEBUG) echo "Successfully connected to Database.<br />";
 			$this->isConnected = true;
@@ -85,12 +88,13 @@ class DatabaseHelper
 			{
 			    if(!$insert)
                 {
+                    $rows = array();
                     while($row = mysqli_fetch_array($request))
                     {
                         $rows[] = $row;
                     } 
                     
-                    return $rows;   
+                    return $rows;
                 }
             }
 		}
@@ -102,6 +106,21 @@ class DatabaseHelper
 		return $this->request($sql);
 	}
     
+    public function request_count()
+    {
+        $sql = "SELECT COUNT(*) FROM " . DB_TABLE_NAME . ";";
+        $request = mysqli_query($this->con, $sql);
+        if (!$request)
+        {
+            throw new Exception('<div class="alert alert-error"><b>SQL request failed</b>: <i>' . mysqli_error($this->con) . '</i></div>');
+        }
+        else
+        {
+            $answer = mysqli_fetch_row($request); 
+        }
+        return $answer[0];
+    }
+    
     public function insert_single($name, $address, $description)
     {
         $sql = "INSERT INTO " . DB_TABLE_NAME . " (name, address, description) VALUES ( '" . $name . "', '" . $address . "', '" . $description . "');"; 
@@ -110,7 +129,7 @@ class DatabaseHelper
 
 	public function request_main()
 	{
-		$sql = "SELECT id, name from " . DB_TABLE_NAME . $this->limit . ";";
+		$sql = "SELECT id, name from " . DB_TABLE_NAME . " " . $this->limit . ";";
 		return $this->request($sql);
 	}
 	
@@ -118,13 +137,7 @@ class DatabaseHelper
 	{
 		$start = (int)($current_position - 1) * $school_per_page; 
 		$school_per_page = (int)$school_per_page;
-
-		$limit = "";
-		if($pagination_activated)
-		{
-			$limit = " LIMIT {" . $start . "}, {" . $school_per_page . "}";	
-		}
-		
+		$limit = " LIMIT " . $start . ", " . $school_per_page;
 		$this->limit = $limit;
 	}
 }

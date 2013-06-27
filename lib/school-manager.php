@@ -67,16 +67,41 @@ class SchoolManager {
 
 	function getMainList()
 	{
-	 	$results = $this->dbHelper->request_main();
+	    if(PAGINATION_ENABLED)
+        {
+            if(empty($_GET["page_num"]))
+            {
+                $_GET["page_num"] = 1;
+            }
+            
+            $this->dbHelper->paginationLimit($_GET["page_num"], SCHOOLS_PER_PAGE);
+        }
+        $results = $this->dbHelper->request_main();
 	 	// Loop to list results
-		foreach ($results as $row)
-		{
-			echo '<div class="well">';
-				echo '<h2>' . $row["name"] . '</h2>';
-				echo '<input type="button" name="submit" id="submit" class="btn" value="submit" onClick = "getdetails(' . $row["id"] . ')" />';
-				echo '<div id="msg' . $row["id"] . '"></div>';
-			echo '</div>';
-		}
+	 	if (!empty($results))
+        {
+           
+            foreach ($results as $row)
+    		{
+    			echo '<div class="well">';
+    				echo '<h2>' . $row["name"] . '</h2>';
+    				echo '<input type="button" name="submit" id="submit" class="btn" value="submit" onClick = "getdetails(' . $row["id"] . ')" />';
+    				echo '<div id="msg' . $row["id"] . '"></div>';
+    			echo '</div>';
+    		}
+        }
+        else
+        {
+            if ($this->dbHelper->request_count() == 0)
+            {
+                echo '<div class="alert alert-warning">Table vide</div>';    
+            }
+            else if(PAGINATION_ENABLED)
+            {
+                echo '<div class="alert alert-warning">Page vide</div>';
+            }
+        }
+		
 	}
 
 	function getSchoolInfos($id)

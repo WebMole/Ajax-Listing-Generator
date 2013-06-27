@@ -50,7 +50,6 @@ define('SCHOOLS_PER_PAGE',      30);
 define('CSS_ENABLED',       true);
 define('SHOOLS_LINKS',      true);
 define('SHOOLS_COUNT',      true);
-define('SHOOLS_COUNT',      true);
 
 /****************************************************************
 * WRAPPER Settings (pages and components)

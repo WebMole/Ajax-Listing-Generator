@@ -111,12 +111,23 @@ if ($access != 'authorized')
 							<input type="text" class="input-xlarge" id="database-name" placeholder="">
 						</div>
 					</div>
+					
+					<div class="control-group">
+                        <label class="control-label" for="database-table">Database table</label>
+                        <div class="controls">
+                            <input type="text" class="input-xlarge" id="database-table" placeholder="">
+                        </div>
+                    </div>
+                    
+                    
 					<div class="control-group">
 						<label class="control-label" for="database-user">Database user</label>
 						<div class="controls">
 							<input type="text" class="input-xlarge" id="database-user" placeholder="">
 						</div>
 					</div>
+					
+					
 					<div class="control-group">
 						<label class="control-label" for="database-password">Database password</label>
 						<div class="controls">
