@@ -52,7 +52,10 @@ class SchoolManager {
     {
         $this->dbHelper->insert_single($name, $address, $description);
     }
-    
+    /**
+     * Insert a number of schools
+     * @param integer $num_schools Number of schools to insert
+     */
     function insertRandomSchools($num_schools)
     {
         $textgen = new LoremIpsumGenerator();
@@ -65,6 +68,10 @@ class SchoolManager {
         }
     }
 
+
+    /**
+     * Retrieve the tiles and ids for the given page
+     */
 	function getMainList()
 	{
 	    if(PAGINATION_ENABLED)
@@ -121,5 +128,11 @@ class SchoolManager {
 	{
 		$this->dbHelper->request_main($id);
 	}
+    
+    function getNumSchools()
+    {
+        $totalSchools = $this->dbHelper->request_count();
+        return $totalSchools;
+    }    
 
 }

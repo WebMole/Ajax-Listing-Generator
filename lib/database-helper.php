@@ -22,9 +22,12 @@
 if ($access != 'authorized')
     die('You are not allowed to view this file');
 
+/**
+ * Helper class to manage application's database
+ */
 class DatabaseHelper
 {
-	public $con;
+    public $con;
 	public $isConnected;
 	public $limit;
 
@@ -38,18 +41,28 @@ class DatabaseHelper
 		if(DEBUG) echo "DatabaseHelper Destroyed<br />";
 	}
 
+    /**
+     * Verify connection before connecting to database
+     */
 	public function init()
 	{
 		$this->testConnection();
 		$this->connectToDatabase();
 	}
 
-	public function testConnection()
+    /**
+     * Verify connection link
+     * @todo verify database connectivity, table existance, etc.
+     */
+    public function testConnection()
 	{
-		if (DB_NAME == "" || DB_USER == "" || DB_HOST == "")
+		if (DB_NAME == "" || DB_USER == "")
 			throw new Exception('Missing Database Informations in config file.');
 	}
 	
+    /**
+     * Connect to database using defined credentials defined in configuration.php
+     */
 	public function connectToDatabase()
 	{
 		$con = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD);
@@ -73,7 +86,8 @@ class DatabaseHelper
 			return $con;
 		}
 	}
-
+    
+    
 	private function request($sql, $insert = false)
 	{
 		if ($this->isConnected)
@@ -100,6 +114,9 @@ class DatabaseHelper
 		}
 	}
 
+    /**
+     * 
+     */
 	public function request_infos($id)
 	{
 		$sql = "SELECT address, description from " . DB_TABLE_NAME . " WHERE id=" . $id . " " . $this->limit . ";";

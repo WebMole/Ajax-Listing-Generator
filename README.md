@@ -15,9 +15,8 @@ This is a demo AJAX application that lets you manage and manipulate schools in a
 
 ## Features
 
-* Administration tools
+* Administration tools filled with alot of options :)
 * Cool graphics
-* Alot of options :)
 
 @todo: make this demo app a webmole submodule, is it worth it? Probably :)
 

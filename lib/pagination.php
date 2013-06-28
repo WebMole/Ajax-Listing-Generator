@@ -22,37 +22,38 @@
 if ($access != 'authorized')
     die('You are not allowed to view this file');
 
-$page_num = 1;
-$last_page_num = 5; // ask mysql here
+$current_page = 1;
 
 if ( !empty($_GET["page_num"]) )
 {
-    $page_num = $_GET["page_num"];
+    $current_page = (int)$_GET["page_num"];
 }
+
+$num_schools = $Schools->getNumSchools();
+$num_pages = ceil($num_schools / SCHOOLS_PER_PAGE);
 
 ?>
 
 <div class="pagination">
   <ul>
-      
-      
     <?php
-    if ($page_num === 1)
-    {
+    if ($current_page == 1)
         echo '<li class="disabled"><a>&laquo;</a></li>';   
-    }
     else
+        echo '<li><a href="?page_num=' . ($current_page - 1) . '">&laquo;</a></li>';
+    
+    for ($i = 1; $i <= $num_pages; $i++)
     {
-        echo '<li class="disabled"><a href="#">&laquo;</a></li>';
+        if ($current_page == $i)
+            echo '<li class="active"><a>' . $current_page . '</a></li>';
+        else
+            echo '<li><a href="?page_num=' . $i . '">' . $i . '</a></li>';
     }
+    
+    if ($current_page == $num_pages)
+        echo '<li class="disabled"><a>&raquo;</a></li>';
+    else
+        echo '<li><a href="?page_num=' . ($current_page + 1) . '">&raquo;</a></li>';
     ?>
-    
-    <li><a href="?page_num=1">1</a></li>
-    <li><a href="?page_num=2">2</a></li>
-    <li><a href="?page_num=3">3</a></li>
-    <li><a href="?page_num=4">4</a></li>
-    <li><a href="?page_num=5">5</a></li>
-    <li><a href="#">&raquo;</a></li>
-    
   </ul>
 </div>
