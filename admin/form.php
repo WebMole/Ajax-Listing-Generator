@@ -27,7 +27,7 @@ if ($access != 'authorized')
 <ul class="nav nav-tabs" id="navigation-tabs">
 	<li class="active"><a href="#general-settings" data-toggle="tab">General settings</a></li>
 	<li><a href="#database" data-toggle="tab">Database settings</a></li>
-	<li><a href="#manage-schools" data-toggle="tab">Manage schools</a></li>
+	<li><a href="#manage-elements" data-toggle="tab">Manage elements</a></li>
 </ul>
 
 <div id="tabs" class="tab-content">
@@ -35,7 +35,7 @@ if ($access != 'authorized')
 	<div id="general-settings" class="tab-pane active">
 		<div id="pagination-settings">
 			<h2>Pagination settings</h2>
-			<p>How many shools to display per page.</p>
+			<p>How many elements to display per page.</p>
 			<form class="form-horizontal">
 				<fieldset>
 					<div class="control-group">
@@ -46,9 +46,9 @@ if ($access != 'authorized')
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="school-per-page">School per page</label>
+						<label class="control-label" for="element-per-page">Element per page</label>
 						<div class="controls">
-							<input type="number" class="input-xlarge" id="school-per-page" placeholder="">
+							<input type="number" class="input-xlarge" id="element-per-page" placeholder="">
 						</div>
 					</div>
 					<div class="form-actions">
@@ -73,7 +73,7 @@ if ($access != 'authorized')
 					<div class="control-group">
 						<div class="controls">
 							<label class="checkbox">
-								<input type="checkbox" id="links-enabled" checked=""> Create links for each school
+								<input type="checkbox" id="links-enabled" checked=""> Create links for each element
 							</label>
 						</div>
 					</div>
@@ -156,27 +156,27 @@ if ($access != 'authorized')
 		</div>
 	</div>
 
-	<div id="manage-schools" class="tab-pane">
+	<div id="manage-elements" class="tab-pane">
 		<div id="add-single">
-			<h2>Insert a single school</h2>
+			<h2>Insert a single element</h2>
 			<form class="form-horizontal">
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="school-name">School name</label>
+						<label class="control-label" for="element-name">Element name</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" id="school-name" placeholder="">
+							<input type="text" class="input-xlarge" id="element-name" placeholder="">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="school-address">School address</label>
+						<label class="control-label" for="element-address">Element address</label>
 						<div class="controls">
-							<input type="text" class="input-xlarge" id="school-address" placeholder="">
+							<input type="text" class="input-xlarge" id="element-address" placeholder="">
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="control-label" for="school-description">School description</label>
+						<label class="control-label" for="element-description">Element description</label>
 						<div class="controls">
-							<textarea type="text" class="input-xlarge" id="school-description" placeholder=""></textarea>
+							<textarea type="text" class="input-xlarge" id="element-description" placeholder=""></textarea>
 						</div>
 					</div>
 
@@ -188,13 +188,13 @@ if ($access != 'authorized')
 		</div>
 
 		<div id="add-multiple">
-			<h2>Insert multiple randomly generated schools</h2>
+			<h2>Insert multiple randomly generated elements</h2>
 			<form class="form-horizontal">
 				<fieldset>
 					<div class="control-group">
-						<label class="control-label" for="school-number">Number of schools</label>
+						<label class="control-label" for="element-number">Number of elements</label>
 						<div class="controls">
-							<input type="number" class="input-xlarge" id="school-number" placeholder="">
+							<input type="number" class="input-xlarge" id="element-number" placeholder="">
 						</div>
 					</div>
 					<div class="form-actions">
@@ -205,9 +205,9 @@ if ($access != 'authorized')
 			<div id="random-sample">
 				<h2>Sample</h2>
 				<div class="well">
-					<h3>@todo: Random School Name</h3>
-					<p>@todo: Random School address</p>
-					<p>@todo: Random School description</p>
+					<h3>@todo: Random Element Name</h3>
+					<p>@todo: Random Element address</p>
+					<p>@todo: Random Element description</p>
 				</div>
 			</div>
 		</div>

@@ -81,9 +81,9 @@ define('PAGINATION_AJAX',       true);
 define('PAGINATION_NUM_LINKS',  -1); // -1 to display all links
 
 /**
- * Number of shools to display per page
+ * Number of elements to display per page
  */
-define('SCHOOLS_PER_PAGE',      30);
+define('ELEMENTS_PER_PAGE',      30);
 
 
 /****************************************************************
@@ -96,22 +96,22 @@ define('SCHOOLS_PER_PAGE',      30);
 define('CSS_ENABLED',           true);
 
 /**
- * Generate pages for each shool and make the title clickable
+ * Generate pages for each element and make the title clickable
  * @todo: implement this
  */
-define('SCHOOLS_LINKS',          true);
+define('ELEMENTS_LINKS',          true);
 
 /**
- * Display total shools in database
+ * Display total elements in database
  * @todo: implement this
  */
-define('SCHOOLS_TOTAL_COUNT',    true);
+define('ELEMENTS_TOTAL_COUNT',    true);
 
 /**
- * Display total shools in current page
+ * Display total elements in current page
  * @todo: implement this
  */
-define('SCHOOLS_PAGE_COUNT',     true);
+define('ELEMENTS_PAGE_COUNT',     true);
 
 
 /****************************************************************
@@ -134,7 +134,7 @@ define('WRAPPER_HEADER',    true);
 define('WRAPPER_FOOTER',    true);
 
 /**
- * Display a sidebar beside schools
+ * Display a sidebar beside elements
  * @todo: implement this
  */
 define('WRAPPER_SIDEBAR',   true);

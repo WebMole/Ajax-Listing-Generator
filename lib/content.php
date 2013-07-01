@@ -24,13 +24,13 @@ if ($access != 'authorized')
 
 // Default Page
 if (empty($_GET["page"]))
-    require_once (dirname(__FILE__) . "/../pages/schools.php");
+    require_once (dirname(__FILE__) . "/../pages/elements.php");
 else
 {
     $page_type = $_GET["page"];
-    if ($page_type == "schools" || $page_type == "home")
+    if ($page_type == "elements" || $page_type == "home")
     {
-        require_once (dirname(__FILE__) . "/../pages/schools.php");
+        require_once (dirname(__FILE__) . "/../pages/elements.php");
     }
     else if ($page_type == "contact")
     {

@@ -41,8 +41,8 @@ else
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>School Listing Configuration</title>
-        <meta name="description" content="School listing configuration">
+        <title>Element Listing Configuration</title>
+        <meta name="description" content="Element listing configuration">
         <meta name="viewport" content="width=device-width">
 
         <link href="//netdna.bootstrapcdn.com/bootswatch/2.3.2/united/bootstrap.min.css" rel="stylesheet">
@@ -54,7 +54,7 @@ else
         <![endif]-->
 
         <div class="container">
-        	<h1>School Test Case Settings</h1>
+        	<h1>Element Test Case Settings</h1>
         	<div id="msg"></div>
         	<?php require_once('form.php'); ?>
         	<footer><a href="../">Go to the Live Application</a></footer>

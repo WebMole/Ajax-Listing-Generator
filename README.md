@@ -1,6 +1,6 @@
-# School Listing Test
+# Ajax Listing Generator
 
-This is a demo AJAX application that lets you manage and manipulate schools in a database using some automated php scripts.
+This is a demo AJAX application that lets you manage and manipulate elements in a database using some automated php scripts.
 
 ## Requirements
 

@@ -34,8 +34,8 @@ require_once(dirname(__FILE__) . "/lib/init.php");
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>School Listing Test</title>
-        <meta name="description" content="School Listing Test">
+        <title>Ajax Listing Generator</title>
+        <meta name="description" content="Ajax Listing Generator">
         <meta name="viewport" content="width=device-width">
 
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->

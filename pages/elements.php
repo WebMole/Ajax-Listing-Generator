@@ -23,15 +23,15 @@ if ($access != 'authorized')
     die('You are not allowed to view this file');
 ?>
 
-<h1>School listing example in ajax</h1>
+<h1>Element listing example in ajax</h1>
 <?php
 
-require_once(dirname(__FILE__) . "/../lib/school-manager.php");
+require_once(dirname(__FILE__) . "/../lib/element-manager.php");
 
-$Schools = new SchoolManager();
+$Elements = new ElementManager();
 try
 {
-    $Schools->getMainList();
+    $Elements->getMainList();
 }
 catch (Exception $e)
 {

@@ -150,11 +150,11 @@ class DatabaseHelper
 		return $this->request($sql);
 	}
 	
-	public function paginationLimit($current_position, $school_per_page)
+	public function paginationLimit($current_position, $element_per_page)
 	{
-		$start = (int)($current_position - 1) * $school_per_page; 
-		$school_per_page = (int)$school_per_page;
-		$limit = " LIMIT " . $start . ", " . $school_per_page;
+		$start = (int)($current_position - 1) * $element_per_page; 
+		$element_per_page = (int)$element_per_page;
+		$limit = " LIMIT " . $start . ", " . $element_per_page;
 		$this->limit = $limit;
 	}
 }

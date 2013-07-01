@@ -26,27 +26,27 @@ if (file_exists(dirname(__FILE__) . '/../configuration.php'))
 else
     die("No configuration detected");
 
-if (file_exists(dirname(__FILE__) . '/../lib/school-manager.php'))
-    require_once(dirname(__FILE__) . '/../lib/school-manager.php');
+if (file_exists(dirname(__FILE__) . '/../lib/element-manager.php'))
+    require_once(dirname(__FILE__) . '/../lib/element-manager.php');
 else
-    die("No school-manager detected");
+    die("No element-manager detected");
 
 $action_type = mysql_real_escape_string($_POST["action_type"]);
 
 /****************************************************************
-* Insert single school
+* Insert single element
 ****************************************************************/
 if ($action_type == "insert_single")
 {
-    $Schools = new SchoolManager();
-    $school_name = mysql_real_escape_string($_POST["school_name"]);
-    $school_address = mysql_real_escape_string($_POST["school_address"]);
-    $school_description = mysql_real_escape_string($_POST["school_description"]);
+    $Elements = new ElementManager();
+    $element_name = mysql_real_escape_string($_POST["element_name"]);
+    $element_address = mysql_real_escape_string($_POST["element_address"]);
+    $element_description = mysql_real_escape_string($_POST["element_description"]);
     
-    if(!empty($school_name) && !empty($school_description) && !empty($school_address))
+    if(!empty($element_name) && !empty($element_description) && !empty($element_address))
     {
-        $Schools->insertSchool($school_name, $school_address, $school_description);
-        echo "<div class='alert alert-success'>Successfully inserted school <b>" . $school_name . "</b> in database</div>";
+        $Elements->insertElement($element_name, $element_address, $element_description);
+        echo "<div class='alert alert-success'>Successfully inserted element <b>" . $element_name . "</b> in database</div>";
     }
     else
     {
@@ -54,23 +54,23 @@ if ($action_type == "insert_single")
     }
 }
 /****************************************************************
-* Insert random schools
+* Insert random elements
 ****************************************************************/
 if ($action_type == "insert_multiple")
 {
-    $Schools = new SchoolManager();
-    $num_random_schools = mysql_real_escape_string(intval($_POST['num_random_schools']));
-    if(!empty($num_random_schools))
+    $Elements = new ElementManager();
+    $num_random_elements = mysql_real_escape_string(intval($_POST['num_random_elements']));
+    if(!empty($num_random_elements))
     {
         $time_start = microtime(true);
         
-        $Schools->insertRandomSchools($num_random_schools);
+        $Elements->insertRandomElements($num_random_elements);
         
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);
         
         echo '<div class="alert alert-success">';
-        echo 'Successfully inserted <b class="label label-info">' . $num_random_schools . ' schools</b> in database.<br />';
+        echo 'Successfully inserted <b class="label label-info">' . $num_random_elements . ' elements</b> in database.<br />';
         echo 'Total Execution Time: <b class="label label-info">' . $execution_time . '</b> seconds';
         echo '</div>';
     }

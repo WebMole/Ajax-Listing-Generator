@@ -27,7 +27,7 @@ if ($access != 'authorized')
     <div class="container">
         <div class="row">
             <div class="span6">
-                <p>Copyme <?php echo date("Y"); ?> School Listing Test. No rights reserved.</p>
+                <p>Copyme <?php echo date("Y"); ?> Ajax Listing Generator. No rights reserved.</p>
             </div>
             
             <div class="span6">

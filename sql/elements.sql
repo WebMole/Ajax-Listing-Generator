@@ -17,16 +17,16 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `school`
+-- Base de données: `element`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `school`
+-- Structure de la table `element`
 --
 
-CREATE TABLE IF NOT EXISTS `school` (
+CREATE TABLE IF NOT EXISTS `element` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `address` text NOT NULL,
@@ -35,10 +35,10 @@ CREATE TABLE IF NOT EXISTS `school` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Contenu de la table `school`
+-- Contenu de la table `element`
 --
 
-INSERT INTO `school` (`id`, `name`, `address`, `description`) VALUES
+INSERT INTO `element` (`id`, `name`, `address`, `description`) VALUES
 (1, 'professionelle', 'thomas gauthier', 'maternelle'),
 (2, 'Saint Mathieu', 'rue bégin', 'Secondaire'),
 (3, 'Dominiquaine racine', 'rue champs elysées chicoutimi', 'collège');

@@ -26,7 +26,7 @@ if ($access != 'authorized')
     <div class="container">
         <div class="row">
             <div class="span6">
-                <a href="#"><img src="assets/img/school-listing-test.png" alt="logo" /></a>
+                <a href="#"><img src="assets/img/ajax-listing-generator.png" alt="logo" /></a>
             </div>
             
             <div class="span6">

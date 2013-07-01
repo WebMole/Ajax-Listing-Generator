@@ -29,8 +29,8 @@ if ( !empty($_GET["page_num"]) )
     $current_page = (int)$_GET["page_num"];
 }
 
-$num_schools = $Schools->getNumSchools();
-$num_pages = ceil($num_schools / SCHOOLS_PER_PAGE);
+$num_elements = $Elements->getNumElements();
+$num_pages = ceil($num_elements / ELEMENTS_PER_PAGE);
 
 ?>
 

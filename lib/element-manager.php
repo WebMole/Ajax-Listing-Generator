@@ -25,7 +25,7 @@ if ($access != 'authorized')
 require_once(dirname(__FILE__) . "/database-helper.php");
 require_once(dirname(__FILE__) . "/LoremIpsum.class.php");
 
-class SchoolManager {
+class ElementManager {
     
 	public $dbHelper = "";
 
@@ -45,21 +45,21 @@ class SchoolManager {
 	}
 
 	function __destruct() {
-		if (DEBUG) echo "SchoolManager Destroyed<br />";
+		if (DEBUG) echo "ElementManager Destroyed<br />";
 	}
 
-    function insertSchool($name, $address, $description)
+    function insertElement($name, $address, $description)
     {
         $this->dbHelper->insert_single($name, $address, $description);
     }
     /**
-     * Insert a number of schools
-     * @param integer $num_schools Number of schools to insert
+     * Insert a number of elements
+     * @param integer $num_elements Number of elements to insert
      */
-    function insertRandomSchools($num_schools)
+    function insertRandomElements($num_elements)
     {
         $textgen = new LoremIpsumGenerator();
-        for ($i=0; $i < $num_schools; $i++)
+        for ($i=0; $i < $num_elements; $i++)
         { 
             $name = $textgen->getContent(3, "txt", false);
             $description = $textgen->getContent(100, "txt", true);
@@ -81,7 +81,7 @@ class SchoolManager {
                 $_GET["page_num"] = 1;
             }
             
-            $this->dbHelper->paginationLimit($_GET["page_num"], SCHOOLS_PER_PAGE);
+            $this->dbHelper->paginationLimit($_GET["page_num"], ELEMENTS_PER_PAGE);
         }
         $results = $this->dbHelper->request_main();
 	 	// Loop to list results
@@ -111,7 +111,7 @@ class SchoolManager {
 		
 	}
 
-	function getSchoolInfos($id)
+	function getElementInfos($id)
 	{
 		$results = $this->dbHelper->request_infos($id);
         foreach ($results as $row)
@@ -124,15 +124,15 @@ class SchoolManager {
 		
 	}
 
-	function getSchool($id)
+	function getElement($id)
 	{
 		$this->dbHelper->request_main($id);
 	}
     
-    function getNumSchools()
+    function getNumElements()
     {
-        $totalSchools = $this->dbHelper->request_count();
-        return $totalSchools;
+        $totalElements = $this->dbHelper->request_count();
+        return $totalElements;
     }    
 
 }

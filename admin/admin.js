@@ -30,7 +30,7 @@ $(document).ready(function() {
 		});
 	$("#add-multiple-action").click(function(e) {
 		e.preventDefault();
-		insertRandomSchools(e);
+		insertRandomElements(e);
 		});
 	
 	// Ajax requests
@@ -39,19 +39,19 @@ $(document).ready(function() {
 		$.ajax({
 			type: "POST",
 			url: "ajax.php",
-			data: {action_type:"insert_single", school_name:$("#school-name").val(), school_address:$("#school-address").val(), school_description:$("#school-description").val()}
+			data: {action_type:"insert_single", element_name:$("#element-name").val(), element_address:$("#element-address").val(), element_description:$("#element-description").val()}
 		}).done(function( result )
 		{
 			$("#msg").html( result );
 		});
 	}
 	
-	function insertRandomSchools()
+	function insertRandomElements()
 	{
 		$.ajax({
 			type: "POST",
 			url: "ajax.php",
-			data: {action_type:"insert_multiple", num_random_schools:$("#school-number").val()}
+			data: {action_type:"insert_multiple", num_random_elements:$("#element-number").val()}
 		}).done(function( result )
 		{
 			$("#msg").html( result );

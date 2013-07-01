@@ -26,16 +26,16 @@ if (file_exists(dirname(__FILE__) . '/../configuration.php'))
 else
     die("No configuration detected");
 
-if (file_exists(dirname(__FILE__) . '/school-manager.php'))
-    require_once(dirname(__FILE__) . '/school-manager.php');
+if (file_exists(dirname(__FILE__) . '/element-manager.php'))
+    require_once(dirname(__FILE__) . '/element-manager.php');
 else
-    die("No school-manager detected");
+    die("No element-manager detected");
 
 if (isset($_POST['id']))
 {
 	$id = $_POST['id'];
-	$Schools = new SchoolManager();
-	$data = $Schools->getSchoolInfos($id);
+	$Elements = new ElementManager();
+	$data = $Elements->getElementInfos($id);
 }
 
 ?>
