@@ -54,7 +54,7 @@ else
         <![endif]-->
 
         <div class="container">
-        	<h1>Element Test Case Settings</h1>
+        	<h1>Ajax Listing Generator Settings</h1>
         	<div id="msg"></div>
         	<?php require_once('form.php'); ?>
         	<footer><a href="../">Go to the Live Application</a></footer>

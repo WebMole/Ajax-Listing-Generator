@@ -34,7 +34,7 @@ $num_pages = ceil($num_elements / ELEMENTS_PER_PAGE);
 
 ?>
 
-<div class="pagination">
+<div class="pagination pagination-centered">
   <ul>
     <?php
     if ($current_page == 1)
