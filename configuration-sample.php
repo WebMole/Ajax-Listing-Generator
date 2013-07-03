@@ -81,6 +81,26 @@ define('PAGINATION_AJAX',       true);
 define('PAGINATION_NUM_LINKS',  -1); // -1 to display all links
 
 /**
+ * Enable or disable "«" link in pagination
+ */
+define('PAGINATION_PREVIOUS_ENABLED',  true);
+
+/**
+ * Enable or disable "»" link in pagination
+ */
+define('PAGINATION_NEXT_ENABLED',  true);
+
+/**
+ * Enable or disable link to the first page in pagination
+ */
+define('PAGINATION_FIRST_ENABLED',  true);
+
+/**
+ * Enable or disable link to the last page  in pagination
+ */
+define('PAGINATION_LAST_ENABLED',  true);
+
+/**
  * Number of elements to display per page
  */
 define('ELEMENTS_PER_PAGE',      30);

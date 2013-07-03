@@ -76,7 +76,11 @@ class ElementManager {
 	{
 	    if(PAGINATION_ENABLED)
         {
-            if(empty($_GET["page_num"]))
+            if ( empty($_GET["page_num"]))
+            {
+                $_GET["page_num"] = 1;
+            }
+            else if (preg_match("/^[0-9]+$/", $_GET["page_num"]) === 0)
             {
                 $_GET["page_num"] = 1;
             }
