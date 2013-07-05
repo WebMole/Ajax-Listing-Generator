@@ -47,10 +47,19 @@ function generatePagination($currentPage, $totalPages, $numLinks = 5, $displayPr
     }
     else
     {
-        $split = floor($numLinks / 2);
+        if ($numLinks % 2 == 0)
+        {
+            $leftLinks = floor($numLinks / 2) - 1;
+            $rightLinks = floor($numLinks / 2);
+        }
+        else {
+            $leftLinks = floor($numLinks / 2);
+            $rightLinks = floor($numLinks / 2);
+        }
+        
  
-        $firstPage = $currentPage - $split;
-        $lastPage = $currentPage + $split;
+        $firstPage = $currentPage - $leftLinks;
+        $lastPage = $currentPage + $rightLinks;
     }
  
     // More links to the right
