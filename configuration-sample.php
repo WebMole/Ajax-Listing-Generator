@@ -76,7 +76,6 @@ define('PAGINATION_AJAX',       true);
 
 /**
  * Number of links displayed in the navigation menu
- * @todo: implement this
  */
 define('PAGINATION_NUM_LINKS',  -1); // -1 to display all links
 

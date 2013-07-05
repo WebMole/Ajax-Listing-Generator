@@ -24,16 +24,12 @@ $(document).ready(function() {
 	  $(this).tab('show');
 	});
 	
+	// Insert Single
 	$("#add-single-action").click(function(e) {
 		e.preventDefault();
 		insertSingle(e);
 		});
-	$("#add-multiple-action").click(function(e) {
-		e.preventDefault();
-		insertRandomElements(e);
-		});
-	
-	// Ajax requests
+		
 	function insertSingle()
 	{
 		$.ajax({
@@ -45,6 +41,12 @@ $(document).ready(function() {
 			$("#msg").html( result );
 		});
 	}
+
+	// Insert Multiple
+	$("#add-multiple-action").click(function(e) {
+		e.preventDefault();
+		insertRandomElements(e);
+		});
 	
 	function insertRandomElements()
 	{
@@ -52,6 +54,24 @@ $(document).ready(function() {
 			type: "POST",
 			url: "ajax.php",
 			data: {action_type:"insert_multiple", num_random_elements:$("#element-number").val()}
+		}).done(function( result )
+		{
+			$("#msg").html( result );
+		});
+	}
+	
+	// Truncate Table
+	$("#remove-all").click(function(e) {
+		e.preventDefault();
+		removeAllElements(e);
+		});
+	
+	function removeAllElements()
+	{
+		$.ajax({
+			type: "POST",
+			url: "ajax.php",
+			data: {action_type:"remove_all"}
 		}).done(function( result )
 		{
 			$("#msg").html( result );

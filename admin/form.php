@@ -22,6 +22,8 @@
 if ($access != 'authorized')
     die('You are not allowed to view this file');
 
+require_once("../lib/LoremIpsum.class.php");
+
 ?>
 
 <ul class="nav nav-tabs" id="navigation-tabs">
@@ -150,9 +152,9 @@ if ($access != 'authorized')
 		<div id="database-actions">
 			<h2>Database actions</h2>
 			<p><span class="label label-warning">Warning</span> changes are permanent.</p>
-			<a class="btn btn-success"><i class="icon icon-white icon-download"></i> Export database</a>
-			<a class="btn btn-primary"><i class="icon icon-white icon-file"></i> Import database</a>
-			<a class="btn btn-danger"><i class="icon icon-white icon-trash"></i> Empty Database</a>
+			<a id="export" class="btn btn-success"><i class="icon icon-white icon-download"></i> Export database</a>
+			<a id="import" class="btn btn-primary"><i class="icon icon-white icon-file"></i> Import database</a>
+			<a id="remove-all" class="btn btn-danger"><i class="icon icon-white icon-trash"></i> Empty Database</a>
 		</div>
 	</div>
 
@@ -203,11 +205,12 @@ if ($access != 'authorized')
 				</fieldset>
 			</form>
 			<div id="random-sample">
-				<h2>Sample</h2>
+				<h2>Randomly generated element sample</h2>
 				<div class="well">
-					<h3>@todo: Random Element Name</h3>
-					<p>@todo: Random Element address</p>
-					<p>@todo: Random Element description</p>
+				    <?php $textgen = new LoremIpsumGenerator(); ?>
+					<h3><?php echo $textgen->getContent(3, "txt", false); ?></h3>
+					<p><?php echo $textgen->getContent(100, "txt", true); ?></p>
+					<p><?php echo $textgen->getContent(4, "txt", false); ?></p>
 				</div>
 			</div>
 		</div>

@@ -47,16 +47,18 @@ function generatePagination($currentPage, $totalPages, $numLinks = 5, $displayPr
     }
     else
     {
+        // Even number of links
         if ($numLinks % 2 == 0)
         {
             $leftLinks = floor($numLinks / 2) - 1;
             $rightLinks = floor($numLinks / 2);
         }
-        else {
+        // Odd number of links
+        else
+        {
             $leftLinks = floor($numLinks / 2);
             $rightLinks = floor($numLinks / 2);
         }
-        
  
         $firstPage = $currentPage - $leftLinks;
         $lastPage = $currentPage + $rightLinks;

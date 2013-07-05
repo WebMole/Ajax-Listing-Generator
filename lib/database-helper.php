@@ -61,7 +61,7 @@ class DatabaseHelper
 	}
 	
     /**
-     * Connect to database using defined credentials defined in configuration.php
+     * Connect to database using defined credentials in configuration.php
      */
 	public function connectToDatabase()
 	{
@@ -86,7 +86,6 @@ class DatabaseHelper
 			return $con;
 		}
 	}
-    
     
 	private function request($sql, $insert = false)
 	{
@@ -114,10 +113,7 @@ class DatabaseHelper
 		}
 	}
 
-    /**
-     * 
-     */
-	public function request_infos($id)
+    public function request_infos($id)
 	{
 		$sql = "SELECT address, description from " . DB_TABLE_NAME . " WHERE id=" . $id . " " . $this->limit . ";";
 		return $this->request($sql);
@@ -157,5 +153,20 @@ class DatabaseHelper
 		$limit = " LIMIT " . $start . ", " . $element_per_page;
 		$this->limit = $limit;
 	}
+    
+    public function remove_all()
+    {
+        $sql = "TRUNCATE " . DB_TABLE_NAME . ";";
+        $request = mysqli_query($this->con, $sql);
+        if (!$request)
+        {
+            throw new Exception('<div class="alert alert-error"><b>SQL request failed</b>: <i>' . mysqli_error($this->con) . '</i></div>');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
 }
 ?>

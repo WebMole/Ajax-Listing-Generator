@@ -53,6 +53,7 @@ if ($action_type == "insert_single")
         echo "<div class='alert alert-error'>You need to fill all the forms</div>";
     }
 }
+
 /****************************************************************
 * Insert random elements
 ****************************************************************/
@@ -77,6 +78,33 @@ if ($action_type == "insert_multiple")
     else
     {
         echo "<div class='alert alert-error'>You need to specify a number</div>";
+    }
+}
+
+
+/****************************************************************
+* Truncate Selected Table (remove all elements from the table)
+****************************************************************/
+if ($action_type == "remove_all")
+{
+    $Elements = new ElementManager();
+    
+    try
+    {
+        $time_start = microtime(true);
+        if ($Elements->dbHelper->remove_all())
+        {
+            $time_end = microtime(true);
+            $execution_time = ($time_end - $time_start);
+            echo '<div class="alert alert-success">';
+            echo 'Successfully <b class="label label-info">removed all elements</b> in database.<br />';
+            echo 'Total Execution Time: <b class="label label-info">' . $execution_time . '</b> seconds';
+            echo '</div>';
+        }
+    }
+    catch (Exception $e)
+    {
+        echo $e;
     }
 }
 ?>

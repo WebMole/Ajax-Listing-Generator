@@ -277,7 +277,7 @@ class LoremIpsumGenerator {
 			for($i = $curr; $i < ($curr + $senSize); $i++)
 				$sentence[] = $words[$i];
 
-			$this->punctuate($sentence);
+			//$this->punctuate($sentence);
 			$curr = $curr + $senSize;
 			$sentences[] = $sentence;
 		}
