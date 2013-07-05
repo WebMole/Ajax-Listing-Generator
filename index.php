@@ -56,9 +56,26 @@ require_once(dirname(__FILE__) . "/lib/init.php");
         <?php if (WRAPPER_ENABLED && WRAPPER_HEADER) require_once(dirname(__FILE__) . "/wrapper/header.php"); ?>
         
         <div class="container">
-            <?php if (WRAPPER_ENABLED && WRAPPER_SIDEBAR) require_once(dirname(__FILE__) . "/wrapper/sidebar.php"); ?>
-            <div class="content">
-        	   <?php require_once("lib/content.php"); ?>
+            <div class="row">
+                <?php
+                if (WRAPPER_ENABLED && WRAPPER_SIDEBAR)
+                {
+                    ?>
+                    <div class="sidebar span4">
+                        <?php require_once(dirname(__FILE__) . "/wrapper/sidebar.php"); ?>
+                    </div>
+                    <div class="content span8">
+                    <?php
+                }
+                else
+                {
+                    ?>
+                    <div class="content span12">
+                    <?php
+                }
+                require_once("lib/content.php");
+                ?>
+            	</div>
         	</div>
         </div>
         

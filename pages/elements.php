@@ -23,7 +23,7 @@ if ($access != 'authorized')
     die('You are not allowed to view this file');
 ?>
 
-<h1>Element listing example in ajax</h1>
+<h2>Element listing example in ajax</h2>
 <?php
 
 require_once(dirname(__FILE__) . "/../lib/element-manager.php");

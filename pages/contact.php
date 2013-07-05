@@ -23,7 +23,7 @@ if ($access != 'authorized')
     die('You are not allowed to view this file');
 ?>
     
-<h1>Contact us!</h1>
+<h2>Contact us!</h2>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ullamcorper mi sit amet dui luctus consequat. Integer mollis congue ligula, et euismod nibh ultricies vel.</p>
 <form class="">
   <div class="row">

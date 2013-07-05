@@ -20,7 +20,7 @@ header#page-header nav
 	float: right;
 }
 
-div.content
+div.content, div.sidebar
 {
 	margin-top: 40px;
 	margin-bottom: 40px;

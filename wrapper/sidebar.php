@@ -22,3 +22,8 @@
 if ($access != 'authorized')
     die('You are not allowed to view this file');
 ?>
+
+<h2>Sample sidebar</h2>
+<div class="well">
+    <p>It is only static at the moment, feel free to insert dynamic content in here to test your crawler ;)</p>
+</div>

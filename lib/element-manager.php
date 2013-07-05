@@ -95,7 +95,7 @@ class ElementManager {
             foreach ($results as $row)
     		{
     			echo '<div class="well">';
-    				echo '<h2>' . $row["name"] . '</h2>';
+    				echo '<h3>' . $row["name"] . '</h3>';
     				echo '<input type="button" name="submit" id="submit" class="btn" value="submit" onClick = "getdetails(' . $row["id"] . ')" />';
     				echo '<div id="msg' . $row["id"] . '"></div>';
     			echo '</div>';

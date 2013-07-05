@@ -25,11 +25,11 @@ if ($access != 'authorized')
 <header id="page-header">
     <div class="container">
         <div class="row">
-            <div class="span6">
+            <div class="span7">
                 <a href="#"><img src="assets/img/ajax-listing-generator.png" alt="logo" /></a>
             </div>
             
-            <div class="span6">
+            <div class="span5">
                 <?php require_once(dirname(__FILE__) . '/navigation.php'); ?>
             </div>
         </div>
